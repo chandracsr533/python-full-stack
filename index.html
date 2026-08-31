@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form-box">
+        <h2>Registration Form</h2>
+        <p>Create a account</p>
+        <form onsubmit="return data()" action="abc.html">
+            <label for="username">Username </label><br>
+            <input type="text" id="username" placeholder="Enter username"><br>
+
+            <label for="email">Email </label><br>
+            <input type="text" id="email" placeholder="Enter email id"><br>
+            
+            <label for="password">Password </label><br>
+            <input type="password" id="password" placeholder="Enter password"><br>
+            
+            <label for="confirm-password">Confirm-Password </label><br>
+            <input type="password" id="confirm-password" placeholder="Re-enter password"><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function data() {
+            const a = document.getElementById("username").value.trim();
+            const b = document.getElementById("email").value.trim();
+            const c = document.getElementById("password").value;
+            const d = document.getElementById("confirm-password").value;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (a === "" || b === "" || c === "" || d === "") {
+                alert("All fields are required");
+                return false;
+            } else if (a.length < 6) {
+                alert("Username should contain more than 6 characters");
+                return false;
+            } else if (!emailPattern.test(b)) {
+                alert("Email is Invalid");
+                return false;
+
+            } else if (c.length < 8) {
+                alert("Password should contain more than 8 characters");
+                return false;
+            } else if (c !== d) {
+                alert("Password doesn't match");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+</body>
+
+</html>
